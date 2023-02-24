@@ -1,0 +1,61 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/build/CMakeFiles/CMakeScratch/TryCompile-PksRiy
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_bb532/fast && /usr/bin/make  -f CMakeFiles/cmTC_bb532.dir/build.make CMakeFiles/cmTC_bb532.dir/build
+make[1]: 进入目录“/home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/build/CMakeFiles/CMakeScratch/TryCompile-PksRiy”
+Building C object CMakeFiles/cmTC_bb532.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -Wall   -O3  -o CMakeFiles/cmTC_bb532.dir/src.c.o -c /home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/build/CMakeFiles/CMakeScratch/TryCompile-PksRiy/src.c
+Linking C executable cmTC_bb532
+/home/cxl/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb532.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall   -O3  -rdynamic CMakeFiles/cmTC_bb532.dir/src.c.o -o cmTC_bb532 
+/usr/bin/ld: CMakeFiles/cmTC_bb532.dir/src.c.o: in function `main':
+src.c:(.text.startup+0x23): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text.startup+0x2c): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text.startup+0x35): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.c:(.text.startup+0x40): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_bb532.dir/build.make:99：cmTC_bb532] 错误 1
+make[1]: 离开目录“/home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/build/CMakeFiles/CMakeScratch/TryCompile-PksRiy”
+make: *** [Makefile:127：cmTC_bb532/fast] 错误 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/build/CMakeFiles/CMakeScratch/TryCompile-dAza8y
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_acfa4/fast && /usr/bin/make  -f CMakeFiles/cmTC_acfa4.dir/build.make CMakeFiles/cmTC_acfa4.dir/build
+make[1]: 进入目录“/home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/build/CMakeFiles/CMakeScratch/TryCompile-dAza8y”
+Building C object CMakeFiles/cmTC_acfa4.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall   -O3 -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_acfa4.dir/CheckFunctionExists.c.o -c /home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/build/CMakeFiles/CMakeScratch/TryCompile-dAza8y/CheckFunctionExists.c
+Linking C executable cmTC_acfa4
+/home/cxl/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_acfa4.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall   -O3 -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_acfa4.dir/CheckFunctionExists.c.o -o cmTC_acfa4  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_acfa4.dir/build.make:99：cmTC_acfa4] 错误 1
+make[1]: 离开目录“/home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/build/CMakeFiles/CMakeScratch/TryCompile-dAza8y”
+make: *** [Makefile:127：cmTC_acfa4/fast] 错误 2
+
+
+

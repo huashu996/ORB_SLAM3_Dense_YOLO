@@ -1,0 +1,61 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/Examples/ROS/YOLO_ORB_SLAM3_with_pointcloud_map/build/CMakeFiles/CMakeScratch/TryCompile-BRAk8c
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_49734/fast && /usr/bin/make  -f CMakeFiles/cmTC_49734.dir/build.make CMakeFiles/cmTC_49734.dir/build
+make[1]: 进入目录“/home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/Examples/ROS/YOLO_ORB_SLAM3_with_pointcloud_map/build/CMakeFiles/CMakeScratch/TryCompile-BRAk8c”
+Building C object CMakeFiles/cmTC_49734.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_49734.dir/src.c.o -c /home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/Examples/ROS/YOLO_ORB_SLAM3_with_pointcloud_map/build/CMakeFiles/CMakeScratch/TryCompile-BRAk8c/src.c
+Linking C executable cmTC_49734
+/home/cxl/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49734.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_49734.dir/src.c.o -o cmTC_49734 
+/usr/bin/ld: CMakeFiles/cmTC_49734.dir/src.c.o: in function `main':
+src.c:(.text+0x3e): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x4a): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x56): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.c:(.text+0x67): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_49734.dir/build.make:99：cmTC_49734] 错误 1
+make[1]: 离开目录“/home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/Examples/ROS/YOLO_ORB_SLAM3_with_pointcloud_map/build/CMakeFiles/CMakeScratch/TryCompile-BRAk8c”
+make: *** [Makefile:127：cmTC_49734/fast] 错误 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/Examples/ROS/YOLO_ORB_SLAM3_with_pointcloud_map/build/CMakeFiles/CMakeScratch/TryCompile-4VW53b
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e3859/fast && /usr/bin/make  -f CMakeFiles/cmTC_e3859.dir/build.make CMakeFiles/cmTC_e3859.dir/build
+make[1]: 进入目录“/home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/Examples/ROS/YOLO_ORB_SLAM3_with_pointcloud_map/build/CMakeFiles/CMakeScratch/TryCompile-4VW53b”
+Building C object CMakeFiles/cmTC_e3859.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_e3859.dir/CheckFunctionExists.c.o -c /home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/Examples/ROS/YOLO_ORB_SLAM3_with_pointcloud_map/build/CMakeFiles/CMakeScratch/TryCompile-4VW53b/CheckFunctionExists.c
+Linking C executable cmTC_e3859
+/home/cxl/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3859.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_e3859.dir/CheckFunctionExists.c.o -o cmTC_e3859  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_e3859.dir/build.make:99：cmTC_e3859] 错误 1
+make[1]: 离开目录“/home/cxl/workspace/YOLO_ORB_SLAM3_with_pointcloud_map-master/Examples/ROS/YOLO_ORB_SLAM3_with_pointcloud_map/build/CMakeFiles/CMakeScratch/TryCompile-4VW53b”
+make: *** [Makefile:127：cmTC_e3859/fast] 错误 2
+
+
+
