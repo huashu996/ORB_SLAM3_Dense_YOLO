@@ -1,12 +1,14 @@
 ## 简介
-此项目在ORB-SLAM3的基础上添加了稠密建图和目标识别模块
+此项目在ORB-SLAM3的基础上添加了稠密建图和目标识别模块，针对ubuntu20.04做了相应的修改，使用RealsenseD435 RGBD相机
+纯净版ORB-SLAM3见
+```
+git clone git@github.com:huashu996/ORB_SLAM3.git
+```
 ## 环境配置
 详情见https://blog.csdn.net/HUASHUDEYANJING/article/details/129053124?spm=1001.2014.3001.5501
-针对ubuntu20.04做了相应的修改
-使用RealsenseD435 RGBD相机
 opencv 4.2
 Pangolin 0.6
-- Install libtorch
+- Install libtorch为了使用YOLO
 ```bash
 wget https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip
 unzip libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip
